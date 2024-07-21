@@ -1,0 +1,10 @@
+@import "../../styles";
+
+.brdr{
+  border: $borderHeight solid $borderColor;
+  margin: 20px 0;
+}
+
+.secondary-c{
+  color: $secondFontColor;
+}
