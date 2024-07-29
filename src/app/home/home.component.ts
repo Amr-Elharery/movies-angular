@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TrendingService } from '../trending.service';
+import { TrendingService } from '../services/trending.service';
 import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home',

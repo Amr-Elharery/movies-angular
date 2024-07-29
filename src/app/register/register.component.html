@@ -1,1 +1,40 @@
-<p>register works!</p>
+<h1 class="mb-4">Register</h1>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="form-group my-2">
+    <label>First name</label>
+    <input [class.is-invalid]="registerForm.controls['first_name'].invalid && registerForm.controls['first_name'].touched" type="text" class="form-control" formControlName="first_name" placeholder="first name" />
+    <div *ngIf="registerForm.controls['first_name'].invalid &&  registerForm.controls['first_name'].touched">
+      <div class="alert alert-danger my-2" *ngIf=" registerForm.controls['first_name'].errors &&  registerForm.controls['first_name'].errors['required']">First name is required.</div>
+      <div class="alert alert-danger my-2" *ngIf=" registerForm.controls['first_name'].errors &&  registerForm.controls['first_name'].errors['minlength']">First name should have at least 2 characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group my-2">
+    <label>Last name</label>
+    <input [class.is-invalid]="registerForm.controls['last_name'].invalid && registerForm.controls['last_name'].touched" type="text" class="form-control" formControlName="last_name" placeholder="last name" />
+    <div *ngIf="registerForm.controls['last_name'].invalid && registerForm.controls['last_name'].touched">
+      <div class="alert alert-danger my-2" *ngIf=" registerForm.controls['last_name'].errors && registerForm.controls['last_name'].errors['required']">Last name is required.</div>
+      <div class="alert alert-danger my-2" *ngIf=" registerForm.controls['last_name'].errors && registerForm.controls['last_name'].errors['minlength']">Last name should have at least 2 characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group my-2">
+    <label>Email</label>
+    <input [class.is-invalid]="registerForm.controls['email'].invalid &&  registerForm.controls['email'].touched" type="email" class="form-control" formControlName="email" placeholder="Email" />
+    <div *ngIf="registerForm.controls['email'].invalid &&  registerForm.controls['email'].touched">
+      <div class="alert alert-danger my-2" *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].errors['required']">Email is required.</div>
+      <div class="alert alert-danger my-2" *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].errors['minlength']">Email should have at least 2 characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group my-2">
+    <label>Password</label>
+    <input [class.is-invalid]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" type="password" class="form-control" formControlName="password" placeholder="Password" />
+    <div *ngIf="registerForm.controls['password'].invalid &&  registerForm.controls['password'].touched">
+      <div class="alert alert-danger my-2" *ngIf="registerForm.controls['password'].errors &&  registerForm.controls['password'].errors['required']">Password is required.</div>
+      <div class="alert alert-danger my-2" *ngIf="registerForm.controls['password'].errors &&  registerForm.controls['password'].errors['minlength']">Password should have at least 8 characters.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-info my-2 text-light" [disabled]="registerForm.invalid">Register</button>
+</form>

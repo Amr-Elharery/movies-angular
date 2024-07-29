@@ -7,8 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class TrendingService {
   private myKey: string=  "442ce21d7fa462c38e1e1a172d690642";
+  private _getUrl (mediaType: string) {
+    return  `https://api.themoviedb.org/3/trending/${mediaType}/day?api_key=${this.myKey}`
+  }
   constructor(private _HttpClient: HttpClient) { }
   getTrending(mediaType:string): Observable<any> {
-    return this._HttpClient.get(`https://api.themoviedb.org/3/trending/${mediaType}/day?api_key=${this.myKey}`);
+    return this._HttpClient.get(this._getUrl(mediaType));
   }
 }
