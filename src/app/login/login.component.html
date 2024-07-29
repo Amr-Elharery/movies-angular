@@ -1,1 +1,21 @@
-<p>login works!</p>
+<h1 class="mb-4">Register</h1>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-group my-2">
+    <label>Email</label>
+    <input [class.is-invalid]="loginForm.controls['email'].invalid &&  loginForm.controls['email'].touched" type="email" class="form-control" formControlName="email" placeholder="Email" />
+    <div *ngIf="loginForm.controls['email'].invalid &&  loginForm.controls['email'].touched">
+      <div class="alert alert-danger my-2" *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].errors['required']">Email is required.</div>
+    </div>
+  </div>
+
+  <div class="form-group my-2">
+    <label>Password</label>
+    <input [class.is-invalid]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" type="password" class="form-control" formControlName="password" placeholder="Password" />
+    <div *ngIf="loginForm.controls['password'].invalid &&  loginForm.controls['password'].touched">
+      <div class="alert alert-danger my-2" *ngIf="loginForm.controls['password'].errors &&  loginForm.controls['password'].errors['required']">Password is required.</div>
+      <div class="alert alert-danger my-2" *ngIf="loginForm.controls['password'].errors &&  loginForm.controls['password'].errors['minlength']">Password should have at least 8 characters.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-info my-2 text-light" [disabled]="loginForm.invalid">Login</button>
+</form>
