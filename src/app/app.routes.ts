@@ -8,9 +8,10 @@ import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { PeopleComponent } from './people/people.component';
 import { NetworksComponent } from './networks/networks.component';
 import { AboutComponent } from './about/about.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'movies', component: MoviesComponent },
   { path: 'tvshows', component: TvShowsComponent },
   { path: 'people', component: PeopleComponent },

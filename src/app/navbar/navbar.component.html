@@ -7,13 +7,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedin">
           <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="home">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedin">
           <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="movies">Movies</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedin">
           <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="tvshows">TV Shows</a>
         </li>
         <!-- <li class="nav-item">
@@ -34,14 +34,14 @@
       <i class="fa-brands fa-twitter"></i>
       <i class="fa-brands fa-instagram"></i>
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isLoggedin">
           <a class="nav-link" aria-current="page" routerActiveLink="active" routerLink="login">Login</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isLoggedin">
           <a class="nav-link" aria-current="page" routerActiveLink="active" routerLink="register">Register</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerActiveLink="active" routerLink="login">Logout</a>
+        <li class="nav-item" *ngIf="isLoggedin">
+          <a class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
